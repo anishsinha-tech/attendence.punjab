@@ -1,0 +1,364 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Punjab Education — Smart Attendance (Government Primary School, Amritsar)</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    /* Simple clean government-styled theme */
+    :root{--punjab:#00695c;--accent:#0b63d6;--muted:#6b7280;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial; margin:0;background:#f3f6f9;color:#0b2545}
+    header{background:linear-gradient(90deg,var(--card),#effaf6);padding:14px 20px;border-bottom:4px solid #e6f3ef}
+    .topbar{display:flex;align-items:center;gap:12px}
+    .gov-brand{display:flex;align-items:center;gap:12px}
+    .logo{width:68px;height:68px;background:linear-gradient(135deg,#fff,#eefaf5);border-radius:8px;padding:8px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,0,0,0.04)}
+    h1{font-size:18px;margin:0}
+    .sub{color:var(--muted);font-size:13px}
+    nav{margin-top:10px;display:flex;gap:12px}
+    nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--punjab);font-weight:600}
+    nav a:hover{background:#eaf6f2}
+    main{max-width:1100px;margin:18px auto;padding:0 18px}
+    .grid{display:grid;grid-template-columns:320px 1fr;gap:18px}
+    .card{background:var(--card);border-radius:10px;padding:14px;box-shadow:0 8px 24px rgba(12,30,80,0.05)}
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:10px;border-bottom:1px solid #eef3fb;text-align:left}
+    th{background:#f8fbfb;color:#0b2545}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}
+    button{background:var(--punjab);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+    input,select,textarea{padding:8px;border-radius:8px;border:1px solid #e6eef0;width:100%}
+    .qr-small{width:96px;height:96px}
+    footer{margin-top:20px;padding:18px;text-align:center;color:var(--muted);font-size:13px}
+    .ticker{background:#f0fffb;padding:8px;border-radius:8px;margin-top:8px}
+    .badge{background:#e6f3ef;color:var(--punjab);padding:6px 10px;border-radius:20px;font-weight:700}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.logo{width:54px;height:54px}}
+  </style>
+  <!-- QR libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.7/minified/html5-qrcode.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="gov-brand">
+        <div class="logo">
+          <!-- simple emblem -->
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" rx="4" fill="#ffffff"/>
+            <path d="M12 3v18" stroke="#00695c" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3 7h18" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="3" stroke="#0b63d6" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Department of School Education — Punjab</h1>
+          <div class="sub">Digital Attendance & Smart Curriculum — Government Primary School, Amritsar</div>
+        </div>
+      </div>
+      <div style="flex:1"></div>
+      <div class="center">
+        <div style="text-align:right">
+          <div class="sub">Ministry Portal</div>
+          <div class="muted">Official demo — For SIH Prototype</div>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <a href="#home" onclick="showSection('home')">Home</a>
+      <a href="#attendance" onclick="showSection('attendance')">Attendance</a>
+      <a href="#scanner" onclick="showSection('scanner')">Scanner</a>
+      <a href="#reports" onclick="showSection('reports')">Reports</a>
+      <a href="#about" onclick="showSection('about')">About</a>
+    </nav>
+  </header>  <main>
+    <div id="home" class="section">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <h2 style="margin:0">Welcome to Smart Attendance — GPS (Punjab)</h2>
+            <div class="muted">This portal demonstrates automated QR-based attendance at Government Primary School, Amritsar.</div>
+          </div>
+          <div class="badge">Official</div>
+        </div>
+        <div class="ticker" style="margin-top:12px">Notification: Digital attendance initiative — Pilot at Government Primary School, Amritsar. Scan assigned QR to mark presence. For help contact education@punjab.gov.in</div><div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
+      <div style="flex:1;min-width:220px">
+        <div class="card">
+          <strong>School Details</strong>
+          <div class="muted" style="margin-top:6px">Government Primary School, Amritsar — Block: City, District: Amritsar, PIN: 143001</div>
+          <table style="margin-top:8px">
+            <tr><th>Head Teacher</th><td>Mrs. Jaspreet Kaur</td></tr>
+            <tr><th>Contact</th><td>0183-xxxxxxx</td></tr>
+            <tr><th>Address</th><td>GT Road, Amritsar, Punjab</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="flex:1;min-width:220px">
+        <div class="card">
+          <strong>Quick Actions</strong>
+          <div style="height:8px"></div>
+          <div class="controls">
+            <button onclick="showSection('attendance')">Open Dashboard</button>
+            <button onclick="showSection('scanner')">Open Scanner</button>
+            <button onclick="exportCSV()">Export Last Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:12px"></div>
+  <div class="card">
+    <strong>About this Pilot</strong>
+    <p class="muted" style="margin-top:8px">This prototype was prepared for the Smart India Hackathon (SIH 2025). It demonstrates a low-infrastructure solution — QR codes printed/stored on devices and a web-based portal that teachers can use to scan and record attendance.</p>
+  </div>
+</div>
+
+<!-- Main app grid -->
+<div class="grid" style="margin-top:14px">
+  <!-- Left column: Students & controls -->
+  <div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Class Roster</strong>
+        <div class="muted">Government Primary School, Amritsar</div>
+      </div>
+
+      <div style="height:10px"></div>
+      <div id="studentList"></div>
+
+      <div style="height:8px"></div>
+      <div style="display:flex;gap:8px">
+        <button onclick="seedData()">Load Example Students</button>
+        <button onclick="clearData()">Clear Data</button>
+        <button onclick="downloadAllQRCodes()">Download QRs</button>
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+    <div class="card">
+      <strong>Admin Controls</strong>
+      <div style="margin-top:8px" class="muted">(Demo login) </div>
+      <div style="height:10px"></div>
+      <div style="display:flex;gap:8px">
+        <select id="roleSelect" onchange="setRole(this.value)">
+          <option value="teacher">Teacher</option>
+          <option value="admin">Administrator</option>
+        </select>
+        <button onclick="setRole('teacher')">Switch to Teacher</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column: Dashboard -->
+  <div>
+    <div id="attendance" class="card section">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>Attendance Dashboard</strong>
+          <div class="muted">Date: <span id="todayDate"></span></div>
+        </div>
+        <div style="text-align:right">
+          <div class="muted">Total Students</div>
+          <div id="totalCount" style="font-size:20px;font-weight:700">0</div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
+        <label class="muted">Total Days for % calculation</label>
+        <input id="totalDays" type="number" value="1" style="width:80px" />
+        <button onclick="computePercent()">Recompute %</button>
+        <div style="flex:1"></div>
+        <button onclick="exportCSV()">Export CSV</button>
+      </div>
+
+      <table id="attTable">
+        <thead><tr><th>Roll</th><th>Name</th><th>Class</th><th>Section</th><th>Present Today</th><th>Present Count</th><th>Percent</th></tr></thead>
+        <tbody id="attBody"></tbody>
+      </table>
+    </div>
+
+    <div style="height:12px"></div>
+    <div id="scanner" class="card section">
+      <strong>QR Scanner</strong>
+      <div class="muted" style="margin-top:6px">Allow camera access and scan student QR to mark attendance.</div>
+      <div style="height:10px"></div>
+      <div id="reader" style="width:100%;height:260px;border-radius:8px;background:#000"></div>
+      <div style="height:8px"></div>
+      <div style="display:flex;gap:8px">
+        <button id="btnStartScan">Start Scan</button>
+        <button id="btnStopScan">Stop</button>
+        <div style="flex:1"></div>
+        <div class="muted">Last: <span id="lastScan">--</span></div>
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+    <div id="reports" class="card section">
+      <strong>Reports</strong>
+      <div class="muted" style="margin-top:8px">View recent logs and export attendance records for official submission.</div>
+      <div id="logs" style="margin-top:8px;max-height:220px;overflow:auto"></div>
+    </div>
+  </div>
+</div>
+
+<div style="height:18px"></div>
+<div id="about" class="section">
+  <div class="card">
+    <h3 style="margin-top:0">About the Initiative</h3>
+    <p class="muted">Aligned with NEP 2020 and the Department of School Education, this system aims to reduce manual overhead and encourage productive use of free periods by linking attendance with a student activity planner (future enhancement).</p>
+  </div>
+</div>
+
+  </main>  <footer>
+    Department of School Education — Punjab | Government of Punjab. This is a demo prototype prepared for educational purposes.
+  </footer>  <script>
+    // ---------- Data structures (localStorage-based) ----------
+    const SAMPLE_STUDENTS = [
+      {roll:101, id:'STU101', name:'Amandeep Kaur', class:'5', section:'A', address:'GT Road, Amritsar'},
+      {roll:102, id:'STU102', name:'Harpreet Singh', class:'5', section:'A', address:'Ranjit Avenue, Amritsar'},
+      {roll:103, id:'STU103', name:'Simranjeet Kaur', class:'4', section:'B', address:'Majitha Road, Amritsar'},
+      {roll:104, id:'STU104', name:'Gurpreet Singh', class:'3', section:'A', address:'Lawrence Road, Amritsar'},
+      {roll:105, id:'STU105', name:'Navjot Kaur', class:'4', section:'A', address:'Putlighar, Amritsar'},
+      {roll:106, id:'STU106', name:'Rajinder Kumar', class:'5', section:'B', address:'Golden Temple Area, Amritsar'},
+      {roll:107, id:'STU107', name:'Mandeep Singh', class:'3', section:'B', address:'Civil Lines, Amritsar'},
+      {roll:108, id:'STU108', name:'Kiran Bala', class:'2', section:'A', address:'Hall Bazar, Amritsar'}
+    ];
+
+    const LS_KEYS = {STUDENTS:'sa_students_v1', ATT:'sa_attendance_v1', LOGS:'sa_logs_v1', ROLE:'sa_role_v1'};
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('todayDate').innerText = new Date().toLocaleDateString();
+      if(!getStudents()) seedData(); else renderStudents();
+      renderAttendanceTable();
+      setRole(getRole());
+    });
+
+    function getStudents(){
+      const raw = localStorage.getItem(LS_KEYS.STUDENTS);
+      return raw ? JSON.parse(raw) : null;
+    }
+    function saveStudents(arr){ localStorage.setItem(LS_KEYS.STUDENTS, JSON.stringify(arr)); }
+
+    function getAttendance(){ const raw = localStorage.getItem(LS_KEYS.ATT); return raw?JSON.parse(raw):{}; }
+    function saveAttendance(obj){ localStorage.setItem(LS_KEYS.ATT, JSON.stringify(obj)); }
+
+    function getLogs(){ const raw = localStorage.getItem(LS_KEYS.LOGS); return raw?JSON.parse(raw):[]; }
+    function saveLogs(arr){ localStorage.setItem(LS_KEYS.LOGS, JSON.stringify(arr)); }
+
+    function getRole(){ return localStorage.getItem(LS_KEYS.ROLE) || 'teacher'; }
+    function setRole(r){ localStorage.setItem(LS_KEYS.ROLE,r); document.getElementById('roleSelect').value = r; document.body.dataset.role=r; }
+
+    function seedData(){ saveStudents(SAMPLE_STUDENTS); saveAttendance({}); saveLogs([]); renderStudents(); renderAttendanceTable(); log('Loaded sample student data.'); }
+    function clearData(){ if(!confirm('Clear all local demo data?')) return; localStorage.removeItem(LS_KEYS.STUDENTS); localStorage.removeItem(LS_KEYS.ATT); localStorage.removeItem(LS_KEYS.LOGS); renderStudents(); renderAttendanceTable(); document.getElementById('logs').innerHTML=''; log('Cleared all data.'); }
+
+    function renderStudents(){ const students = getStudents()||[]; const container = document.getElementById('studentList'); container.innerHTML='';
+      for(const s of students){
+        const div = document.createElement('div'); div.style.display='flex'; div.style.alignItems='center'; div.style.justifyContent='space-between'; div.style.marginBottom='10px';
+        const left = document.createElement('div');
+        left.innerHTML = `<div style="font-weight:700">${s.name} <span style='font-weight:600;color:var(--muted)'>(${s.roll})</span></div><div class='muted'>Class ${s.class} - Section ${s.section}<div style='font-size:12px;color:var(--muted)'>${s.address}</div></div>`;
+        const qrwrap = document.createElement('div'); qrwrap.style.textAlign='center';
+        const qid = 'qr-'+s.id; const holder = document.createElement('div'); holder.id = qid; holder.className='qr-small'; qrwrap.appendChild(holder);
+        const dl = document.createElement('div'); dl.style.marginTop='6px'; dl.innerHTML = `<button onclick="downloadQRCode('${s.id}','${s.name}')">Download QR</button>`;
+        qrwrap.appendChild(dl);
+        div.appendChild(left); div.appendChild(qrwrap);
+        container.appendChild(div);
+        // generate QR
+        new QRCode(holder, {text:s.id,width:96,height:96});
+      }
+      document.getElementById('totalCount').innerText = students.length;
+    }
+
+    function downloadQRCode(id,name){
+      const tmp = document.getElementById('qr-'+id).querySelector('img') || document.getElementById('qr-'+id).querySelector('canvas');
+      if(!tmp){ alert('QR not generated yet'); return; }
+      let dataUrl;
+      if(tmp.tagName.toLowerCase()==='img') dataUrl = tmp.src; else dataUrl = tmp.toDataURL();
+      const a = document.createElement('a'); a.href = dataUrl; a.download = name+'_'+id+'.png'; a.click();
+      log('Downloaded QR for '+name);
+    }
+
+    function downloadAllQRCodes(){ const students = getStudents()||[]; if(students.length===0){ alert('No students'); return; } students.forEach(s=> setTimeout(()=>downloadQRCode(s.id,s.name),200)); }
+
+    // Attendance marking (localStorage) - key = date, values: {STU101: true}
+    function markPresent(studentId){ const dateKey = new Date().toISOString().slice(0,10);
+      const att = getAttendance(); if(!att[dateKey]) att[dateKey]={};
+      if(att[dateKey][studentId]){ log('Already marked: '+studentId); return false; }
+      att[dateKey][studentId]=true; saveAttendance(att);
+      // increment cumulative count
+      const logs = getLogs(); logs.unshift({ts: new Date().toISOString(), id: studentId}); if(logs.length>200) logs.pop(); saveLogs(logs);
+      renderAttendanceTable(); renderLogs(); return true;
+    }
+
+    function renderAttendanceTable(){ const students = getStudents()||[]; const att = getAttendance(); const tbody = document.getElementById('attBody'); tbody.innerHTML='';
+      const dateKey = new Date().toISOString().slice(0,10);
+      const totalDays = parseInt(document.getElementById('totalDays').value)||1;
+      for(const s of students){
+        // compute present count across days
+        let presentCount = 0;
+        for(const d in att){ if(att[d][s.id]) presentCount++; }
+        const presentToday = att[dateKey] && att[dateKey][s.id] ? 'Yes' : 'No';
+        const percent = Math.round((presentCount/totalDays)*100);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${s.roll}</td><td>${s.name}</td><td>${s.class}</td><td>${s.section}</td><td>${presentToday}</td><td>${presentCount}</td><td>${percent}%</td>`;
+        tbody.appendChild(tr);
+      }
+      document.getElementById('totalCount').innerText = students.length;
+    }
+
+    function computePercent(){ renderAttendanceTable(); log('Recomputed percentages with totalDays='+document.getElementById('totalDays').value); }
+
+    function renderLogs(){ const logs = getLogs(); const div = document.getElementById('logs'); div.innerHTML=''; for(const l of logs){ const d = new Date(l.ts).toLocaleString(); const s = getStudents().find(x=>x.id===l.id); div.innerHTML += `<div style='padding:6px;border-bottom:1px solid #f2f6f8'><strong>${s? s.name: l.id}</strong> (${l.id}) — <span class='muted'>${d}</span></div>`; } }
+
+    function log(msg){ const ts = new Date().toLocaleString(); const logs = getLogs(); logs.unshift({ts: new Date().toISOString(), id:'SYS', msg:msg}); if(logs.length>200) logs.pop(); saveLogs(logs); renderLogs(); }
+
+    // CSV export
+    function exportCSV(){ const students = getStudents()||[]; const att = getAttendance(); const dateKeys = Object.keys(att).sort();
+      if(students.length===0){ alert('No data'); return; }
+      let csv = 'Roll,ID,Name,Class,Section,Address,' + dateKeys.join(',') + '
+';
+      for(const s of students){
+        const row = [s.roll, s.id, '"'+s.name+'"', s.class, s.section, '"'+s.address+'"'];
+        for(const d of dateKeys){ row.push(att[d] && att[d][s.id] ? 'Present' : ''); }
+        csv += row.join(',') + '
+';
+      }
+      const blob = new Blob([csv], {type:'text/csv'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download = 'attendance_export_'+new Date().toISOString().slice(0,10)+'.csv'; a.click(); URL.revokeObjectURL(url); log('Exported CSV'); }
+
+    // ---------- QR Scanner ----------
+    let html5QrCode = null;
+    document.getElementById('btnStartScan').addEventListener('click', async ()=>{
+      if(html5QrCode) return; html5QrCode = new Html5Qrcode('reader');
+      try{
+        const devices = await Html5Qrcode.getCameras(); if(!devices || devices.length===0) { alert('No camera found'); html5QrCode=null; return; }
+        const camId = devices[0].id;
+        await html5QrCode.start(camId, {fps:10, qrbox:250}, qrSuccess, qrError);
+        log('Scanner started');
+      }catch(e){ console.error(e); alert('Camera error: '+e); html5QrCode=null; }
+    });
+    document.getElementById('btnStopScan').addEventListener('click', async ()=>{ if(!html5QrCode) return; await html5QrCode.stop(); html5QrCode.clear(); html5QrCode = null; log('Scanner stopped'); });
+
+    function qrSuccess(decodedText, decodedResult){ document.getElementById('lastScan').innerText = decodedText + ' @ ' + new Date().toLocaleTimeString();
+      const students = getStudents()||[]; const s = students.find(x=>x.id===decodedText);
+      if(!s){ alert('Unknown QR: '+decodedText); log('Unknown QR scanned: '+decodedText); return; }
+      const ok = markPresent(decodedText);
+      if(ok) { alert('Marked present: '+s.name); log('Marked present: '+s.name); }
+      else { alert(s.name+' already marked today.'); }
+    }
+    function qrError(err){ /* ignore intermittent errors */ }
+
+    // Section navigation
+    function showSection(id){ document.querySelectorAll('.section').forEach(el=>el.style.display='none'); const el = document.getElementById(id); if(el) el.style.display='block'; window.location.hash = id; }
+    // initial show
+    document.querySelectorAll('.section').forEach(el=>el.style.display='none');
+    const initial = window.location.hash ? window.location.hash.replace('#','') : 'home'; showSection(initial);
+
+    // Download helper for QR canvas -> used earlier
+    // small utility to convert canvas to image for some browsers
+  </script></body>
+</html>
